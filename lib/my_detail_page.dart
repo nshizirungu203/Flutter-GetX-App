@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_getx/detail_controler.dart';
 import 'package:flutter_getx/recentContest.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,6 +39,8 @@ class _DetailPageState extends State<DetailPage> {
     double height=MediaQuery.of(context).size.height;
     double width=MediaQuery.of(context).size.width;
     int _currentIndex  = 0;
+    //Dependency injection
+    final DetailController fav = Get.put(DetailController());
     return
       Scaffold(
           body: Container(
@@ -45,7 +48,9 @@ class _DetailPageState extends State<DetailPage> {
             child: Stack(
                 children: [
                   Positioned(top:30, left:10,child: IconButton(
-                    onPressed: ()=>Get.to(()=>ContentPage()), icon: Icon(Icons.arrow_back_ios),
+                    onPressed: ()=>Get.to(()=>ContentPage()), icon: Icon(Icons.home,
+                      color: Colors.white ),
+
                   )),
                   Positioned(
                     top: 70,
@@ -334,8 +339,10 @@ class _DetailPageState extends State<DetailPage> {
                           borderRadius: BorderRadius.circular(20),
                           color:Color(0xFFfbc33e)
                         ),
-                        child: Icon(Icons.favorite_border,
-                        color:Colors.white
+                        child: IconButton(
+                          icon: Icon(Icons.favorite_border),
+                          onPressed: ()=>fav.favCounter(),
+                          color: Colors.white,
                         )
                       ),
                       SizedBox(width: 10,),

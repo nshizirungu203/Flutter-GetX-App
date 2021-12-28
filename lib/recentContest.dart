@@ -36,7 +36,8 @@ class _RecentContestState extends State<RecentContest> {
         backgroundColor: Color(0xFF69c5df),
         leading: IconButton(
           onPressed: ()=>Get.back(),
-          icon: Icon(Icons.arrow_back_ios),
+          icon: Icon(Icons.home_outlined,
+          color: Colors.white,),
         ),
       ),
       backgroundColor: Color(0xFFcbe6f6),
